@@ -630,6 +630,8 @@ public class GuiRecipeViewer extends ContainerBase {
             initButtons();
             tab.redrawSlots = false;
         }
+
+        Utils.postRender();
     }
 
     @Override
