@@ -2,6 +2,7 @@ package net.glasslauncher.hmifabric.tabs;
 
 import com.mojang.serialization.Lifecycle;
 import net.glasslauncher.hmifabric.HowManyItems;
+import net.glasslauncher.hmifabric.HowManyItemsClient;
 import net.glasslauncher.hmifabric.TabUtils;
 import net.minecraft.client.gui.screen.container.ContainerBase;
 import net.minecraft.item.ItemInstance;

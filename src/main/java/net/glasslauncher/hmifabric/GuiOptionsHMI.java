@@ -88,7 +88,7 @@ public class GuiOptionsHMI extends ScreenBase {
             Config.config.devMode = !Config.config.devMode;
             buttonDevMode.text = "Enable Developer Mode: " + (Config.config.devMode ? "ON" : "OFF");
         }
-        HowManyItems.onSettingChanged();
+        HowManyItemsClient.onSettingChanged();
     }
 
     @Override

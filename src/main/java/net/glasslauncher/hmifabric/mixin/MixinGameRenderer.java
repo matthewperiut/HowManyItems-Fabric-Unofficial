@@ -1,6 +1,6 @@
 package net.glasslauncher.hmifabric.mixin;
 
-import net.glasslauncher.hmifabric.HowManyItems;
+import net.glasslauncher.hmifabric.HowManyItemsClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.sortme.GameRenderer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,13 +20,13 @@ public class MixinGameRenderer {
     @Inject(method = "method_1844", at = @At(value = "TAIL"))
     private void onTick(float delta, CallbackInfo ci) {
         long newClock = 0L;
-        if (minecraft.level != null && HowManyItems.thisMod != null) {
+        if (minecraft.level != null && HowManyItemsClient.thisMod != null) {
             newClock = minecraft.level.getLevelTime();
             if (newClock != clock) {
-                HowManyItems.thisMod.onTickInGame(minecraft);
+                HowManyItemsClient.thisMod.onTickInGame(minecraft);
             }
             if (minecraft.currentScreen != null) {
-                HowManyItems.thisMod.onTickInGUI(minecraft, minecraft.currentScreen);
+                HowManyItemsClient.thisMod.onTickInGUI(minecraft, minecraft.currentScreen);
             }
         }
         clock = newClock;

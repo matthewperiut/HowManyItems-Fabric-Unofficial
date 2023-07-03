@@ -42,10 +42,10 @@ public class GuiTabOrder extends ScreenBase {
         left = 0;
         top = 32;
         slotHeight = 21;
-        currentTabs = HowManyItems.getTabs();
+        currentTabs = HowManyItemsClient.getTabs();
         newOrder = new Tab[allTabs.size()];
         tabEnabled = new boolean[allTabs.size()];
-        allTabs = HowManyItems.getTabs();
+        allTabs = HowManyItemsClient.getTabs();
     }
 
     @Override
@@ -85,7 +85,7 @@ public class GuiTabOrder extends ScreenBase {
 
     @Override
     public void onClose() {
-        HowManyItems.tabOrderChanged(tabEnabled, newOrder);
+        HowManyItemsClient.tabOrderChanged(tabEnabled, newOrder);
     }
 
     @Override
@@ -95,7 +95,7 @@ public class GuiTabOrder extends ScreenBase {
         } else if (guibutton.id == buttons.size() - 2) {
             Config.config.recipeViewerDraggableGui = !Config.config.recipeViewerDraggableGui;
             guibutton.text = "Gui Size: " + (Config.config.recipeViewerDraggableGui ? "Draggable" : "Auto");
-            HowManyItems.onSettingChanged();
+            HowManyItemsClient.onSettingChanged();
         } else {
             if (guibutton.id % 3 == 2) {
                 tabEnabled[guibutton.id / 3] = !tabEnabled[guibutton.id / 3];

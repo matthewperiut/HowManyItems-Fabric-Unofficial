@@ -23,6 +23,9 @@
       "net.glasslauncher.hmifabric.HowManyItemsServer"
     ],
     "stationapi:event_bus_client": [
+      "net.glasslauncher.hmifabric.HowManyItemsClient"
+    ],
+    "stationapi:event_bus": [
       "net.glasslauncher.hmifabric.HowManyItems"
     ],
     "gcapi": [

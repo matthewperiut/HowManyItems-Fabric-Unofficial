@@ -178,7 +178,7 @@ public class Utils {
     //Returns the number of enabled tabs
     public static int visibleTabSize() {
         int largestIndex = -1;
-        for (Tab tab : HowManyItems.getTabs()) {
+        for (Tab tab : HowManyItemsClient.getTabs()) {
             if (tab.index > largestIndex)
                 largestIndex = tab.index;
         }
@@ -195,7 +195,7 @@ public class Utils {
 
     public static void drawRect(int i, int j, int k, int l, int colour) {
         disableLighting();
-        HowManyItems.drawRect(i, j, k, l, colour);
+        HowManyItemsClient.drawRect(i, j, k, l, colour);
     }
 
     public static void drawSlot(int x, int y, int colour) {
@@ -346,7 +346,7 @@ public class Utils {
             missingResources.add(resource);
             String error = "Missing file " + new File("bin\\minecraft.jar").getAbsolutePath().replace("\\", "/") + resource;
             if (System.getProperty("java.class.path").toLowerCase().contains("eclipse")) {
-                logError(new String[]{error, "Alternate Location " + HowManyItems.class.getClassLoader().getResource("").getPath().replaceFirst("/*$", "") + resource});
+                logError(new String[]{error, "Alternate Location " + HowManyItemsClient.class.getClassLoader().getResource("").getPath().replaceFirst("/*$", "") + resource});
             } else {
                 logError(error);
             }

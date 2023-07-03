@@ -50,7 +50,7 @@ public class GuiRecipeViewer extends ContainerBase {
             }
 
         }
-        tabs = HowManyItems.getTabs();
+        tabs = HowManyItemsClient.getTabs();
         newTab(tabs.get(0));
     }
 
@@ -64,7 +64,7 @@ public class GuiRecipeViewer extends ContainerBase {
         inv.prevPages.push(inv.getPage() * inv.currentTab.recipesPerPage);
         inv.prevGetUses.push(true);
 
-        for (Tab tab : HowManyItems.getTabs()) {
+        for (Tab tab : HowManyItemsClient.getTabs()) {
             boolean tabMatchesBlock = false;
             for (ItemInstance tabBlock : tab.equivalentCraftingStations) {
                 if (tabBlock.isDamageAndIDIdentical(itemstack)) {
@@ -98,7 +98,7 @@ public class GuiRecipeViewer extends ContainerBase {
             inv.prevGetUses.push(getUses);
 
             inv.newList = true;
-            for (Tab tab : HowManyItems.getTabs()) {
+            for (Tab tab : HowManyItemsClient.getTabs()) {
                 tab.updateRecipes(inv.filter.peek(), getUses);
             }
             postPush();
@@ -108,12 +108,12 @@ public class GuiRecipeViewer extends ContainerBase {
 
     private void postPush() {
         if (inv.currentTab.size == 0) {
-            for (Tab tab : HowManyItems.getTabs()) {
+            for (Tab tab : HowManyItemsClient.getTabs()) {
                 if (tab.size > 0) {
                     newTab(tab);
                     break;
                 }
-                if (HowManyItems.getTabs().indexOf(tab) == HowManyItems.getTabs().size() - 1) {
+                if (HowManyItemsClient.getTabs().indexOf(tab) == HowManyItemsClient.getTabs().size() - 1) {
                     inv.filter.pop();
                     inv.prevTabs.pop();
                     inv.prevPages.pop();
@@ -122,7 +122,7 @@ public class GuiRecipeViewer extends ContainerBase {
                         inv.newList = false;
                         return;
                     } else
-                        for (Tab tab2 : HowManyItems.getTabs()) {
+                        for (Tab tab2 : HowManyItemsClient.getTabs()) {
 
                             tab2.updateRecipes(inv.filter.peek(), inv.prevGetUses.peek());
                         }
@@ -146,7 +146,7 @@ public class GuiRecipeViewer extends ContainerBase {
             displayParent();
             return;
         } else {
-            for (Tab tab : HowManyItems.getTabs()) {
+            for (Tab tab : HowManyItemsClient.getTabs()) {
                 tab.updateRecipes(inv.filter.peek(), inv.prevGetUses.peek());
             }
             newTab(inv.prevTabs.pop());

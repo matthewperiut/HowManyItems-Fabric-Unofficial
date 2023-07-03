@@ -2,7 +2,7 @@ package net.glasslauncher.hmifabric.mixin;
 
 import net.glasslauncher.hmifabric.Config;
 import net.glasslauncher.hmifabric.GuiOverlay;
-import net.glasslauncher.hmifabric.HowManyItems;
+import net.glasslauncher.hmifabric.HowManyItemsClient;
 import net.glasslauncher.hmifabric.KeyBindings;
 import net.glasslauncher.hmifabric.Utils;
 import net.minecraft.client.gui.screen.container.ContainerBase;
@@ -20,7 +20,7 @@ public class MixinContainerBase {
         if (Keyboard.getEventKey() == KeyBindings.toggleOverlay.key && Utils.keybindValid(KeyBindings.toggleOverlay)) {
             if (Utils.isGuiOpen(ContainerBase.class) && !GuiOverlay.searchBoxFocused()) {
                 Config.config.overlayEnabled = !Config.config.overlayEnabled;
-                if (HowManyItems.thisMod.overlay != null) HowManyItems.thisMod.overlay.toggle();
+                if (HowManyItemsClient.thisMod.overlay != null) HowManyItemsClient.thisMod.overlay.toggle();
             }
         }
     }

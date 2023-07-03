@@ -107,7 +107,7 @@ public class InventoryRecipeViewer implements InventoryBase {
     public Stack<Tab> prevTabs = new Stack<>();
     public Stack<Integer> prevPages = new Stack<>();
     public Stack<Boolean> prevGetUses = new Stack<>();
-    public Tab currentTab = HowManyItems.getTabs().get(0);
+    public Tab currentTab = HowManyItemsClient.getTabs().get(0);
 
     public Boolean newList = false;
     //protected ItemInstance filter;

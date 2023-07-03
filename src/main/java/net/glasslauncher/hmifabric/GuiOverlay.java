@@ -60,7 +60,7 @@ public class GuiOverlay extends ScreenBase {
         lastKeyTimeout = System.currentTimeMillis() + 200L;
         lastKey = Keyboard.getEventKey();
 
-        if(HowManyItems.getTabs().size() > 0) guiBlock = TabUtils.getItemFromGui(screen);
+        if(HowManyItemsClient.getTabs().size() > 0) guiBlock = TabUtils.getItemFromGui(screen);
 
         init(Utils.getMC(), screen.width, screen.height);
 
@@ -115,7 +115,7 @@ public class GuiOverlay extends ScreenBase {
 
     public void drawScreen(int posX, int posY) {
         boolean shiftHeld = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-        if(shiftHeld && HowManyItems.getTabs().size() > 0) {
+        if(shiftHeld && HowManyItemsClient.getTabs().size() > 0) {
             buttonOptions.iconIndex = 2;
             if(buttonTrash != null) {
                 buttonTrash.text = "Delete ALL";
@@ -297,7 +297,7 @@ public class GuiOverlay extends ScreenBase {
         }
         else if(buttonOptions.isMouseOver(minecraft, posX, posY))
         {
-            if(!shiftHeld || HowManyItems.getTabs().size() == 0) {
+            if(!shiftHeld || HowManyItemsClient.getTabs().size() == 0) {
                 s = "Settings";
             }
             else if(guiBlock != null) {
@@ -407,7 +407,7 @@ public class GuiOverlay extends ScreenBase {
                                 if(eventButton == 0) spawnedItem.count = hoverItem.getMaxStackSize();
                                 else spawnedItem.count = 1;
                                 Message customData = new Message(Identifier.of("hmifabric:giveItem"));
-                                customData.ints = new int[] {spawnedItem.itemId, spawnedItem.count, spawnedItem.getDamage()};
+                                customData.objects = new Object[] {spawnedItem};
                                 PacketHelper.send(customData);
                             }
                             else if(Config.config.mpGiveCommand.length() > 0) {
@@ -425,7 +425,7 @@ public class GuiOverlay extends ScreenBase {
                         }
                     }
                     else if(minecraft.player.inventory.getCursorItem() == null) {
-                        HowManyItems.pushRecipe(screen, hoverItem, eventButton == 1);
+                        HowManyItemsClient.pushRecipe(screen, hoverItem, eventButton == 1);
                     }
                 }
             }
@@ -505,12 +505,12 @@ public class GuiOverlay extends ScreenBase {
             decIndex();
         }
         else if(guibutton == buttonOptions) {
-            if(shiftHeld && HowManyItems.getTabs().size() > 0) {
+            if(shiftHeld && HowManyItemsClient.getTabs().size() > 0) {
                 if(guiBlock == null) {
-                    HowManyItems.pushRecipe(screen, null, true);
+                    HowManyItemsClient.pushRecipe(screen, null, true);
                 }
                 else {
-                    HowManyItems.pushTabBlock(screen, guiBlock);
+                    HowManyItemsClient.pushTabBlock(screen, guiBlock);
                 }
             }
             else if (ctrlHeld) {
@@ -615,7 +615,7 @@ public class GuiOverlay extends ScreenBase {
     @Override
     protected void keyPressed(char c, int i)
     {
-        if(!searchBoxFocused() && Config.config.fastSearch && !HowManyItems.keyHeldLastTick) {
+        if(!searchBoxFocused() && Config.config.fastSearch && !HowManyItemsClient.keyHeldLastTick) {
             if(!Utils.keyEquals(i, minecraft.options.inventoryKey) && !Utils.keyEquals(i, KeyBindings.allRecipes) && !Utils.keyEquals(i, KeyBindings.toggleOverlay)
                     && (CharacterUtils.validCharacters.indexOf(c) >= 0 || (i == Keyboard.KEY_BACK && searchBox.getText().length() > 0))) {
                 ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);
@@ -661,7 +661,7 @@ public class GuiOverlay extends ScreenBase {
                             if (screen instanceof GuiRecipeViewer) {
                                 ((GuiRecipeViewer) screen).push(null, false);
                             }
-                            else if (HowManyItems.getTabs().size() > 0){
+                            else if (HowManyItemsClient.getTabs().size() > 0){
                                 GuiRecipeViewer newgui = new GuiRecipeViewer(null, false, screen);
                                 minecraft.currentScreen = newgui;
                                 ScreenScaler scaledresolution = new ScreenScaler(minecraft.options, minecraft.actualWidth, minecraft.actualHeight);

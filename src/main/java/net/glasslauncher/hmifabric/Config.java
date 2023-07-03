@@ -74,7 +74,7 @@ public class Config {
     @GConfig(value = "config", visibleName = "HMI Config")
     public static ConfigFields config = new ConfigFields();
 
-    public static boolean isHMIServer = true;
+    public static boolean isHMIServer = false;
 
     public static class ConfigFields {
         @ConfigName("Overlay Enabled")

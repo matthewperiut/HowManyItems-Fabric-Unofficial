@@ -62,7 +62,7 @@ public class GuiControlsHMI extends ScreenBase {
             binds[buttonId].key = i;
             ((Button) buttons.get(buttonId)).text = Keyboard.getKeyName(i);
             buttonId = -1;
-            HowManyItems.onSettingChanged();
+            HowManyItemsClient.onSettingChanged();
         } else {
             super.keyPressed(c, i);
         }
@@ -78,7 +78,7 @@ public class GuiControlsHMI extends ScreenBase {
             buttonId = guibutton.id;
             guibutton.text = "> " + Keyboard.getKeyName(binds[guibutton.id].key) + " <";
         }
-        HowManyItems.onSettingChanged();
+        HowManyItemsClient.onSettingChanged();
     }
 
     @Override
